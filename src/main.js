@@ -62,15 +62,11 @@ printWords(h, m);
 
 // Objective 2
 
-
 let time = prompt("Please input time:");
-// const [ hour, min ] = name.split(' : ').map((h,m) => parseInt(h,m));
 const arr = time.split(':');
 const hour = parseInt(arr[ 0 ]);
 const min = parseInt(arr[ 1 ]);
 printWords(hour, min);
 
 exports.printWords = printWords;
-
-// Objective 3
 
