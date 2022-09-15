@@ -13,6 +13,7 @@ function printWords(h, m) {
 
     const hour = nums[ h % 12 ];
 
+
     if (m == 0) {
         const result = hour + " o'clock "
         return result;
@@ -69,4 +70,5 @@ const min = parseInt(arr[ 1 ]);
 printWords(hour, min);
 
 exports.printWords = printWords;
+
 

@@ -8,6 +8,7 @@ app.get('/time/:inputTime', (req, res) => {
     const hour = parseInt(arr[ 0 ]);
     const min = parseInt(arr[ 1 ]);
 
+
     let results = timeFunction.printWords(hour, min)
     res.json({ "Time": results })
 })
