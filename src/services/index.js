@@ -3,14 +3,21 @@ const app = express();
 const timeFunction = require('../main')
 
 app.get('/time/:inputTime', (req, res) => {
-    const newtime = req.params.inputTime;
-    const arr = newtime.split(':');
-    const hour = parseInt(arr[ 0 ]);
-    const min = parseInt(arr[ 1 ]);
+    const inputParameter = req.params.inputTime;
+    const splittedArray = inputParameter.split(':');
 
+    let min = ''
+    let hour = ''
+    let response
+    if (!isNaN(splittedArray[ 0 ]) & splittedArray[ 0 ].length == 2 & !isNaN(splittedArray[ 1 ]) & splittedArray[ 1 ].length == 2) {
+        hour = parseInt(splittedArray[ 0 ]);
+        min = parseInt(splittedArray[ 1 ]);
+        response = timeFunction.humanReadableTimeConverter(hour + ":" + min);
+    } else {
+        response = " its no valid input time.";
+    }
 
-    let results = timeFunction.printWords(hour, min)
-    res.json({ "Time": results })
+    res.json({ "Response": response })
 })
 
 app.listen(3000, () => console.log("Rest service is running."))
