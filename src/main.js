@@ -1,7 +1,7 @@
 const prompt = require("prompt-sync")({ sigint: true });
 
-function humanReadableTimeConverter(resultTime) {
-    let nums = [ "zero", "one", "two", "three", "four",
+function humanReadableTimeConverter(inputHour, inputMinute) {
+    let numbers = [ "zero", "one", "two", "three", "four",
         "five", "six", "seven", "eight", "nine",
         "ten", "eleven", "twelve", "thirteen",
         "fourteen", "fifteen", "sixteen", "seventeen",
@@ -59,7 +59,8 @@ function humanReadableTimeConverter(resultTime) {
         ' fifty '
     ]
 
-    const [ h, m ] = resultTime.split(':').map(n => parseInt(n));
+    const h = inputHour;
+    const m = inputMinute;
     const hour = HOURS[ h % 12 ];
     const suffix = (h < 12) ? 'am' : 'pm';
     let minute = '';
@@ -88,8 +89,8 @@ function humanReadableTimeConverter(resultTime) {
     }
 
     else if (m == 25) {
-        console.log("twenty five past" + " " + nums[ (h % 12) ]);
-        const result = "twenty five past" + nums[ (h % 12) ]
+        console.log("twenty five past" + " " + numbers[ (h % 12) ]);
+        const result = "twenty five past" + numbers[ (h % 12) ]
         return result;
     }
 
@@ -100,8 +101,8 @@ function humanReadableTimeConverter(resultTime) {
     }
 
     else if (m == 55) {
-        console.log("Five to " + nums[ (h % 12) + 1 ]);
-        const result = "Five to " + nums[ (h % 12) + 1 ]
+        console.log("Five to " + numbers[ (h % 12) + 1 ]);
+        const result = "Five to " + numbers[ (h % 12) + 1 ]
         return result;
     }
 
@@ -119,8 +120,7 @@ const getMinute = currentTime.getMinutes();
 
 const time = getHour.toString()
 const time1 = getMinute.toString()
-const resultTime = time + ":" + time1;
-console.log(humanReadableTimeConverter(resultTime));
+console.log(humanReadableTimeConverter(time, time1));
 
 
 
@@ -130,8 +130,7 @@ let input = prompt("Please input time:");
 const arr = input.split(':');
 const hour = parseInt(arr[ 0 ]);
 const min = parseInt(arr[ 1 ]);
-const inputResult = hour + ":" + min
-humanReadableTimeConverter(inputResult);
+humanReadableTimeConverter(hour, min);
 
 exports.humanReadableTimeConverter = humanReadableTimeConverter;
 

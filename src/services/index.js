@@ -12,7 +12,7 @@ app.get('/time/:inputTime', (req, res) => {
     if (!isNaN(splittedArray[ 0 ]) & splittedArray[ 0 ].length == 2 & !isNaN(splittedArray[ 1 ]) & splittedArray[ 1 ].length == 2) {
         hour = parseInt(splittedArray[ 0 ]);
         min = parseInt(splittedArray[ 1 ]);
-        response = timeFunction.humanReadableTimeConverter(hour + ":" + min);
+        response = timeFunction.humanReadableTimeConverter(hour, min);
     } else {
         response = " its no valid input time.";
     }
